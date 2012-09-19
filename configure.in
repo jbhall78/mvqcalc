@@ -1,0 +1,91 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_PREREQ(2.59)
+
+AC_INIT(gplexcalc, 0.70)
+AC_CONFIG_SRCDIR(src/gplexcalc.c)
+
+AC_CANONICAL_SYSTEM
+
+AM_INIT_AUTOMAKE([foreign no-define])
+
+AM_CONFIG_HEADER(config.h)
+
+AC_PROG_CC
+dnl AC_PROG_CC_STDC
+AM_MAINTAINER_MODE
+
+PROG_SUBDIRS="src"
+AC_SUBST(PROG_SUBDIRS)
+
+dnl Why does newer autoconf on Debian 6 put -g -O2 in default CFLAGS?
+dnl I should allow the user to pass CFLAGS to configure, however,
+dnl it is really annoying to have optimization AND debugging enabled
+dnl at the same time so I am disabling this for now until I determine
+dnl the correct solution.
+unset CFLAGS
+if test "$CC" = "gcc"; then
+	FLAGS="-pipe -Wall"
+	OPTIMIZE="-O2 -ffast-math -finline-functions"
+	PROFILE="-pg"
+	RELEASE="-fomit-frame-pointer"
+fi
+DEBUG="-g -DDEBUG"
+
+dnl Release Build Flags
+COMMON_CFLAGS="$FLAGS $OPTIMIZE $RELEASE"
+
+AC_ARG_ENABLE(debug,
+[  --enable-debug        Produce an executable with debugging symbols],
+[COMMON_CFLAGS="$FLAGS $DEBUG"] )
+
+AC_ARG_ENABLE(profile,
+[  --enable-profile        Produce a profiled executable],
+[COMMON_CFLAGS="$FLAGS $OPTIMIZE $PROFILE"])
+
+dnl these values work, but earlier versions may work too
+dnl run aclocal, autoconf, automake if you change these
+PKG_CHECK_MODULES([PKGCONFIG], [gtk+-2.0 >= 2.20.1 glib-2.0 >= 2.24.2 libglade-2.0 >= 2.6.4 ])
+
+PROG_CFLAGS="$CFLAGS $COMMON_CFLAGS $PKGCONFIG_CFLAGS"
+PROG_LIBS="$LIBS $PKGCONFIG_LIBS"
+
+dnl libglade requires this linker option to connect signals to
+dnl functions in the program I'm guessing they don't include
+dnl this by default because it may break some programs that 
+dnl connect their signals manually but still use libglade
+dnl for loading creating their layouts
+
+dnl I'm not sure of the equivilant option on other linkers
+dnl than GNU's
+PROG_LIBS="$PROG_LIBS -Wl,--export-dynamic"
+
+AC_HAVE_LIBRARY(m, ,)
+
+dnl define the packages data directory
+if test "x${datadir}" = 'x${prefix}/share'; then
+	if test "x${prefix}" = "xNONE"; then
+		pkgdatadir="${ac_default_prefix}/share/${PACKAGE}"
+	else
+		pkgdatadir="${prefix}/share/${PACKAGE}"
+	fi
+else
+	pkgdatadir="${datadir}/${PACKAGE}"
+fi
+DATADIR="${pkgdatadir}"
+dnl AC_DEFINE_UNQUOTED(DATADIR, "${pkgdatadir}", Define to data dir)
+
+dnl Set PACKAGE_SOURCE_DIR in config.h.
+packagesrcdir=`cd $srcdir && pwd`
+AC_DEFINE_UNQUOTED(PACKAGE_SOURCE_DIR, "${packagesrcdir}", Define to src dir)
+
+AC_SUBST(DATADIR)
+AC_SUBST(PROG_CFLAGS)
+AC_SUBST(PROG_LIBS)
+
+dnl echo "PROG_CFLAGS=$PROG_CFLAGS"
+dnl echo "PROG_LIBS=$PROG_LIBS"
+
+AC_OUTPUT([
+Makefile
+src/Makefile
+])

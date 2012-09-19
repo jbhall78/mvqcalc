@@ -1,0 +1,25 @@
+style "green_fg"
+{
+    fg[NORMAL] = {0.0,1.0,0.0}
+}
+style "yellow_fg"
+{
+    fg[NORMAL] = {1.0,1.0,0.0}
+}
+style "red_fg"
+{
+    fg[NORMAL] = {1.0,0.0,0.0}
+}
+style "dark_grey_bg"
+{
+    base[NORMAL] = {0.1,0.1,0.1}
+}
+
+widget "*label_row*" style "green_fg"
+widget "*label_col*" style "green_fg"
+widget "*vector_label_*" style "green_fg"
+widget "*scalar_label_*" style "green_fg"
+widget "*quat_label_col*" style "green_fg"
+widget "*section_label_*" style "red_fg"
+/* widget "*section_button_*" style "red_fg" */
+widget "*textview_*" style "dark_grey_bg"
