@@ -789,7 +789,7 @@
     <property name="has_separator">False</property>
     <property name="program_name">Gtk Complex Number Calculator</property>
     <property name="version">v0.70</property>
-    <property name="copyright" translatable="yes">Copyright (c) 2012 Jason Hall &lt;gplexcalc@gmail.com&gt;</property>
+    <property name="copyright" translatable="yes">Copyright (c) 2012 Jason Hall</property>
     <property name="comments" translatable="yes">Matrix, Vector &amp; Quaternion Calculator</property>
     <property name="license" translatable="yes">                    GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
@@ -1465,7 +1465,7 @@ may consider it more useful to permit linking proprietary applications with
 the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 &lt;http://www.gnu.org/philosophy/why-not-lgpl.html&gt;.</property>
-    <property name="authors">Jason Hall &lt;gplexcalc@gmail.com&gt;
+    <property name="authors">Jason Hall
 </property>
     <signal name="close" handler="about_dialog_deactivate"/>
     <signal name="response" handler="about_dialog_deactivate"/>

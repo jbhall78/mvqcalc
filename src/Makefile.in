@@ -35,7 +35,7 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 target_triplet = @target@
-bin_PROGRAMS = gplexcalc$(EXEEXT)
+bin_PROGRAMS = mvqcalc$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -48,12 +48,12 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am__objects_1 = gplexcalc-gplexcalc.$(OBJEXT) \
-	gplexcalc-mathlib.$(OBJEXT)
-am_gplexcalc_OBJECTS = $(am__objects_1)
-gplexcalc_OBJECTS = $(am_gplexcalc_OBJECTS)
-gplexcalc_DEPENDENCIES =
-gplexcalc_LINK = $(CCLD) $(gplexcalc_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
+am__objects_1 = mvqcalc-mvqcalc.$(OBJEXT) \
+	mvqcalc-mathlib.$(OBJEXT)
+am_mvqcalc_OBJECTS = $(am__objects_1)
+mvqcalc_OBJECTS = $(am_mvqcalc_OBJECTS)
+mvqcalc_DEPENDENCIES =
+mvqcalc_LINK = $(CCLD) $(mvqcalc_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -63,8 +63,8 @@ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-SOURCES = $(gplexcalc_SOURCES)
-DIST_SOURCES = $(gplexcalc_SOURCES)
+SOURCES = $(mvqcalc_SOURCES)
+DIST_SOURCES = $(mvqcalc_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -173,10 +173,10 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-files = gplexcalc.c mathlib.c mathlib.h
-gplexcalc_SOURCES = $(files)
-gplexcalc_CFLAGS = @PROG_CFLAGS@ -DDATADIR=\""$(DATADIR)"\"
-gplexcalc_LDADD = @PROG_LIBS@
+files = mvqcalc.c mathlib.c mathlib.h
+mvqcalc_SOURCES = $(files)
+mvqcalc_CFLAGS = @PROG_CFLAGS@ -DDATADIR=\""$(DATADIR)"\"
+mvqcalc_LDADD = @PROG_LIBS@
 all: all-am
 
 .SUFFIXES:
@@ -248,9 +248,9 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-gplexcalc$(EXEEXT): $(gplexcalc_OBJECTS) $(gplexcalc_DEPENDENCIES) 
-	@rm -f gplexcalc$(EXEEXT)
-	$(gplexcalc_LINK) $(gplexcalc_OBJECTS) $(gplexcalc_LDADD) $(LIBS)
+mvqcalc$(EXEEXT): $(mvqcalc_OBJECTS) $(mvqcalc_DEPENDENCIES) 
+	@rm -f mvqcalc$(EXEEXT)
+	$(mvqcalc_LINK) $(mvqcalc_OBJECTS) $(mvqcalc_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -258,8 +258,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gplexcalc-gplexcalc.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gplexcalc-mathlib.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mvqcalc-mvqcalc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mvqcalc-mathlib.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -275,33 +275,33 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(COMPILE) -c `$(CYGPATH_W) '$<'`
 
-gplexcalc-gplexcalc.o: gplexcalc.c
-@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gplexcalc_CFLAGS) $(CFLAGS) -MT gplexcalc-gplexcalc.o -MD -MP -MF $(DEPDIR)/gplexcalc-gplexcalc.Tpo -c -o gplexcalc-gplexcalc.o `test -f 'gplexcalc.c' || echo '$(srcdir)/'`gplexcalc.c
-@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/gplexcalc-gplexcalc.Tpo $(DEPDIR)/gplexcalc-gplexcalc.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gplexcalc.c' object='gplexcalc-gplexcalc.o' libtool=no @AMDEPBACKSLASH@
+mvqcalc-mvqcalc.o: mvqcalc.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mvqcalc_CFLAGS) $(CFLAGS) -MT mvqcalc-mvqcalc.o -MD -MP -MF $(DEPDIR)/mvqcalc-mvqcalc.Tpo -c -o mvqcalc-mvqcalc.o `test -f 'mvqcalc.c' || echo '$(srcdir)/'`mvqcalc.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/mvqcalc-mvqcalc.Tpo $(DEPDIR)/mvqcalc-mvqcalc.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mvqcalc.c' object='mvqcalc-mvqcalc.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gplexcalc_CFLAGS) $(CFLAGS) -c -o gplexcalc-gplexcalc.o `test -f 'gplexcalc.c' || echo '$(srcdir)/'`gplexcalc.c
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mvqcalc_CFLAGS) $(CFLAGS) -c -o mvqcalc-mvqcalc.o `test -f 'mvqcalc.c' || echo '$(srcdir)/'`mvqcalc.c
 
-gplexcalc-gplexcalc.obj: gplexcalc.c
-@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gplexcalc_CFLAGS) $(CFLAGS) -MT gplexcalc-gplexcalc.obj -MD -MP -MF $(DEPDIR)/gplexcalc-gplexcalc.Tpo -c -o gplexcalc-gplexcalc.obj `if test -f 'gplexcalc.c'; then $(CYGPATH_W) 'gplexcalc.c'; else $(CYGPATH_W) '$(srcdir)/gplexcalc.c'; fi`
-@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/gplexcalc-gplexcalc.Tpo $(DEPDIR)/gplexcalc-gplexcalc.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gplexcalc.c' object='gplexcalc-gplexcalc.obj' libtool=no @AMDEPBACKSLASH@
+mvqcalc-mvqcalc.obj: mvqcalc.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mvqcalc_CFLAGS) $(CFLAGS) -MT mvqcalc-mvqcalc.obj -MD -MP -MF $(DEPDIR)/mvqcalc-mvqcalc.Tpo -c -o mvqcalc-mvqcalc.obj `if test -f 'mvqcalc.c'; then $(CYGPATH_W) 'mvqcalc.c'; else $(CYGPATH_W) '$(srcdir)/mvqcalc.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/mvqcalc-mvqcalc.Tpo $(DEPDIR)/mvqcalc-mvqcalc.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mvqcalc.c' object='mvqcalc-mvqcalc.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gplexcalc_CFLAGS) $(CFLAGS) -c -o gplexcalc-gplexcalc.obj `if test -f 'gplexcalc.c'; then $(CYGPATH_W) 'gplexcalc.c'; else $(CYGPATH_W) '$(srcdir)/gplexcalc.c'; fi`
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mvqcalc_CFLAGS) $(CFLAGS) -c -o mvqcalc-mvqcalc.obj `if test -f 'mvqcalc.c'; then $(CYGPATH_W) 'mvqcalc.c'; else $(CYGPATH_W) '$(srcdir)/mvqcalc.c'; fi`
 
-gplexcalc-mathlib.o: mathlib.c
-@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gplexcalc_CFLAGS) $(CFLAGS) -MT gplexcalc-mathlib.o -MD -MP -MF $(DEPDIR)/gplexcalc-mathlib.Tpo -c -o gplexcalc-mathlib.o `test -f 'mathlib.c' || echo '$(srcdir)/'`mathlib.c
-@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/gplexcalc-mathlib.Tpo $(DEPDIR)/gplexcalc-mathlib.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mathlib.c' object='gplexcalc-mathlib.o' libtool=no @AMDEPBACKSLASH@
+mvqcalc-mathlib.o: mathlib.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mvqcalc_CFLAGS) $(CFLAGS) -MT mvqcalc-mathlib.o -MD -MP -MF $(DEPDIR)/mvqcalc-mathlib.Tpo -c -o mvqcalc-mathlib.o `test -f 'mathlib.c' || echo '$(srcdir)/'`mathlib.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/mvqcalc-mathlib.Tpo $(DEPDIR)/mvqcalc-mathlib.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mathlib.c' object='mvqcalc-mathlib.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gplexcalc_CFLAGS) $(CFLAGS) -c -o gplexcalc-mathlib.o `test -f 'mathlib.c' || echo '$(srcdir)/'`mathlib.c
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mvqcalc_CFLAGS) $(CFLAGS) -c -o mvqcalc-mathlib.o `test -f 'mathlib.c' || echo '$(srcdir)/'`mathlib.c
 
-gplexcalc-mathlib.obj: mathlib.c
-@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gplexcalc_CFLAGS) $(CFLAGS) -MT gplexcalc-mathlib.obj -MD -MP -MF $(DEPDIR)/gplexcalc-mathlib.Tpo -c -o gplexcalc-mathlib.obj `if test -f 'mathlib.c'; then $(CYGPATH_W) 'mathlib.c'; else $(CYGPATH_W) '$(srcdir)/mathlib.c'; fi`
-@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/gplexcalc-mathlib.Tpo $(DEPDIR)/gplexcalc-mathlib.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mathlib.c' object='gplexcalc-mathlib.obj' libtool=no @AMDEPBACKSLASH@
+mvqcalc-mathlib.obj: mathlib.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mvqcalc_CFLAGS) $(CFLAGS) -MT mvqcalc-mathlib.obj -MD -MP -MF $(DEPDIR)/mvqcalc-mathlib.Tpo -c -o mvqcalc-mathlib.obj `if test -f 'mathlib.c'; then $(CYGPATH_W) 'mathlib.c'; else $(CYGPATH_W) '$(srcdir)/mathlib.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/mvqcalc-mathlib.Tpo $(DEPDIR)/mvqcalc-mathlib.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='mathlib.c' object='mvqcalc-mathlib.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gplexcalc_CFLAGS) $(CFLAGS) -c -o gplexcalc-mathlib.obj `if test -f 'mathlib.c'; then $(CYGPATH_W) 'mathlib.c'; else $(CYGPATH_W) '$(srcdir)/mathlib.c'; fi`
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(mvqcalc_CFLAGS) $(CFLAGS) -c -o mvqcalc-mathlib.obj `if test -f 'mathlib.c'; then $(CYGPATH_W) 'mathlib.c'; else $(CYGPATH_W) '$(srcdir)/mathlib.c'; fi`
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \

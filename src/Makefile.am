@@ -1,7 +1,7 @@
-bin_PROGRAMS = gplexcalc
+bin_PROGRAMS = mvqcalc
 
-files = gplexcalc.c mathlib.c mathlib.h
+files = mvqcalc.c mathlib.c mathlib.h
 
-gplexcalc_SOURCES = $(files)
-gplexcalc_CFLAGS = @PROG_CFLAGS@ -DDATADIR=\""$(DATADIR)"\"
-gplexcalc_LDADD = @PROG_LIBS@
+mvqcalc_SOURCES = $(files)
+mvqcalc_CFLAGS = @PROG_CFLAGS@ -DDATADIR=\""$(DATADIR)"\"
+mvqcalc_LDADD = @PROG_LIBS@
