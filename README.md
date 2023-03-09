@@ -1,6 +1,6 @@
 
 MVQcalc
 <hr>
-![Screenshot](mvqcalc-screenshot.png)
+<img src="mvqcalc-screenshot.png">
 <hr>
 
